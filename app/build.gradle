@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+        defaultConfig {
+        applicationId "com.gdc.it99.sunshine"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode gradle.versionCode
+        versionName gradle.versionName
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    implementation project(':weather_core')
+    annotationProcessor "com.github.SilenceDut.Hub:hub-compiler:$gradle.hub"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$gradle.butterknife"
+}
